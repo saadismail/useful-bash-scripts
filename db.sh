@@ -6,6 +6,7 @@ if [ -f /root/.my.cnf ]; then
 	echo "Please enter the NAME of the new MySQL database! (example: database1)"
 	read dbname
 	echo "Please enter the MySQL database CHARACTER SET! (example: latin1, utf8, ...)"
+	echo "Enter utf8 if you don't know what you are doing"
 	read charset
 	echo "Creating new MySQL database..."
 	mysql -e "CREATE DATABASE ${dbname} /*\!40100 DEFAULT CHARACTER SET ${charset} */;"
@@ -36,6 +37,7 @@ else
 	echo "Please enter the NAME of the new MySQL database! (example: database1)"
 	read dbname
 	echo "Please enter the MySQL database CHARACTER SET! (example: latin1, utf8, ...)"
+	echo "Enter utf8 if you don't know what you are doing"
 	read charset
 	echo "Creating new MySQL database..."
 	mysql -uroot -p${rootpasswd} -e "CREATE DATABASE ${dbname} /*\!40100 DEFAULT CHARACTER SET ${charset} */;"
