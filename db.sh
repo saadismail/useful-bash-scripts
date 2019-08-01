@@ -3,19 +3,19 @@
 
 # If /root/.my.cnf exists then it won't ask for root password
 if [ -f /root/.my.cnf ]; then
-	echo "Please enter the NAME of the new WordPress database! (example: database1)"
+	echo "Please enter the NAME of the new MySQL database! (example: database1)"
 	read dbname
-	echo "Please enter the WordPress database CHARACTER SET! (example: latin1, utf8, ...)"
+	echo "Please enter the MySQL database CHARACTER SET! (example: latin1, utf8, ...)"
 	read charset
-	echo "Creating new WordPress database..."
+	echo "Creating new MySQL database..."
 	mysql -e "CREATE DATABASE ${dbname} /*\!40100 DEFAULT CHARACTER SET ${charset} */;"
 	echo "Database successfully created!"
 	echo "Showing existing databases..."
 	mysql -e "show databases;"
 	echo ""
-	echo "Please enter the NAME of the new WordPress database user! (example: user1)"
+	echo "Please enter the NAME of the new MySQL database user! (example: user1)"
 	read username
-	echo "Please enter the PASSWORD for the new WordPress database user!"
+	echo "Please enter the PASSWORD for the new MySQL database user!"
 	read userpass
 	echo "Creating new user..."
 	mysql -e "CREATE USER ${username}@localhost IDENTIFIED BY '${userpass}';"
@@ -31,19 +31,19 @@ if [ -f /root/.my.cnf ]; then
 else
 	echo "Please enter root user MySQL password!"
 	read rootpasswd
-	echo "Please enter the NAME of the new WordPress database! (example: database1)"
+	echo "Please enter the NAME of the new MySQL database! (example: database1)"
 	read dbname
-	echo "Please enter the WordPress database CHARACTER SET! (example: latin1, utf8, ...)"
+	echo "Please enter the MySQL database CHARACTER SET! (example: latin1, utf8, ...)"
 	read charset
-	echo "Creating new WordPress database..."
+	echo "Creating new MySQL database..."
 	mysql -uroot -p${rootpasswd} -e "CREATE DATABASE ${dbname} /*\!40100 DEFAULT CHARACTER SET ${charset} */;"
 	echo "Database successfully created!"
 	echo "Showing existing databases..."
 	mysql -uroot -p${rootpasswd} -e "show databases;"
 	echo ""
-	echo "Please enter the NAME of the new WordPress database user! (example: user1)"
+	echo "Please enter the NAME of the new MySQL database user! (example: user1)"
 	read username
-	echo "Please enter the PASSWORD for the new WordPress database user!"
+	echo "Please enter the PASSWORD for the new MySQL database user!"
 	read userpass
 	echo "Creating new user..."
 	mysql -uroot -p${rootpasswd} -e "CREATE USER ${username}@localhost IDENTIFIED BY '${userpass}';"
